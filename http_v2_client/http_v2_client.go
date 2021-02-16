@@ -194,6 +194,10 @@ func (c *HttpV2Client) Close() error {
 		return nil
 	}
 
+	closeChunk := NewChunk()
+	closeChunk.Body.Write([]byte("Close"))
+	c.revResult.receivedChunk <- *closeChunk
+
 	return c.TcpConn.Close()
 }
 
@@ -265,7 +269,9 @@ func (c *HttpV2Client) listenPort(ctx context.Context) error {
 		case <-c.revResult.receiveEnable:
 			if err := c.readFromTcpConn(); err != nil {
 				if err != io.EOF {
-					ConsoleLogger.Fatalln(err.Error())
+					fmt.Println("EOF %s ", err.Error())
+					ctx.Done()
+					return err
 				}
 			}
 		default:
