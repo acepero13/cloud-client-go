@@ -110,7 +110,7 @@ func (c *HttpV2Client) Connect() error {
 }
 
 func (c *HttpV2Client) SendHeaders(headers []string) error {
-	if err := c.checkConnection(); err != nil {
+	if err := c.CheckConnection(); err != nil {
 		return err
 	}
 
@@ -127,7 +127,7 @@ func (c *HttpV2Client) SendHeaders(headers []string) error {
 }
 
 func (c *HttpV2Client) SendMultiPart(parameters []string, body []byte) error {
-	if err := c.checkConnection(); err != nil {
+	if err := c.CheckConnection(); err != nil {
 		return err
 	}
 
@@ -152,7 +152,7 @@ func (c *HttpV2Client) SendMultiPart(parameters []string, body []byte) error {
 }
 
 func (c *HttpV2Client) SendMultiPartEnd() error {
-	if err := c.checkConnection(); err != nil {
+	if err := c.CheckConnection(); err != nil {
 		return err
 	}
 	if err := c.sendChunk([]byte(fmt.Sprintf("%s--%s--%s", CRLF, c.boundary, CRLF))); err != nil {
@@ -182,7 +182,7 @@ func (c *HttpV2Client) sendChunkEnd() error {
 	return err
 }
 
-func (c *HttpV2Client) checkConnection() error {
+func (c *HttpV2Client) CheckConnection() error {
 	if c.TcpConn == nil {
 		return errors.New("call Connect method firstly")
 	}
@@ -197,6 +197,8 @@ func (c *HttpV2Client) Close() error {
 	closeChunk := NewChunk()
 	closeChunk.Body.Write([]byte("Close"))
 	c.revResult.receivedChunk <- *closeChunk
+
+	defer func() { c.TcpConn = nil }()
 
 	return c.TcpConn.Close()
 }
