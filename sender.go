@@ -2,11 +2,11 @@ package main
 
 import (
 	"bufio"
-	. "cloud-client-go/config"
-	"cloud-client-go/http_v2_client"
-	. "cloud-client-go/util"
 	"encoding/json"
 	"fmt"
+	. "github.com/acepero13/cloud-client-go/config"
+	"github.com/acepero13/cloud-client-go/http_v2_client"
+	. "github.com/acepero13/cloud-client-go/util"
 	"io"
 	"io/ioutil"
 	"os"

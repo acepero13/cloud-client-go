@@ -2,8 +2,7 @@
 
 builds:
   # You can have multiple builds defined as a yaml list
-  -
-    id: "cloud-client-go"
+  - id: "github.com/acepero13/cloud-client-go"
     env:
       - CGO_ENABLED=0
     goos:

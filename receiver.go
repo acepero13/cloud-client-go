@@ -2,10 +2,10 @@ package main
 
 import (
 	"bytes"
-	"cloud-client-go/http_v2_client"
-	. "cloud-client-go/http_v2_client"
-	. "cloud-client-go/util"
 	"fmt"
+	"github.com/acepero13/cloud-client-go/http_v2_client"
+	. "github.com/acepero13/cloud-client-go/http_v2_client"
+	. "github.com/acepero13/cloud-client-go/util"
 	"os"
 	"strings"
 )

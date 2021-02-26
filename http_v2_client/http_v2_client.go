@@ -2,11 +2,11 @@ package http_v2_client
 
 import (
 	"bytes"
-	. "cloud-client-go/util"
 	"context"
 	"crypto/tls"
 	"errors"
 	"fmt"
+	. "github.com/acepero13/cloud-client-go/util"
 	"io"
 	"net"
 	"strconv"

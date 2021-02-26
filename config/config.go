@@ -1,9 +1,9 @@
 package config
 
 import (
-	. "cloud-client-go/util"
 	"encoding/json"
 	"fmt"
+	. "github.com/acepero13/cloud-client-go/util"
 	"os"
 	"strings"
 )

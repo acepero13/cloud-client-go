@@ -1,9 +1,9 @@
 package main
 
 import (
-	config2 "cloud-client-go/config"
-	. "cloud-client-go/http_v2_client"
-	. "cloud-client-go/util"
+	config2 "github.com/acepero13/cloud-client-go/config"
+	. "github.com/acepero13/cloud-client-go/http_v2_client"
+	. "github.com/acepero13/cloud-client-go/util"
 	"github.com/fatih/color"
 	"github.com/urfave/cli/v2"
 	"os"
@@ -17,7 +17,7 @@ var (
 func main() {
 	disLogo := displayLogo()
 	app := &cli.App{
-		Name:  "cloud-client-go",
+		Name:  "github.com/acepero13/cloud-client-go",
 		Usage: "Make a Cerence cloud request, such as ASR, TTS requests",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
