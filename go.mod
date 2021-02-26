@@ -1,4 +1,4 @@
-module github.com/acepero13/cloud-client-go
+module cloud-client-go
 
 go 1.14
 
